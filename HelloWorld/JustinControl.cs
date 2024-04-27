@@ -19,7 +19,17 @@ namespace HelloWorld;
 [ContentProperty(Name = nameof(Child))]
 public class JustinControl : Control
 {
-    public static readonly DependencyProperty ChildProperty = DependencyProperty.Register(nameof(Child), typeof(UIElement), typeof(JustinControl), new PropertyMetadata(null, OnChildChanged));
+    public static readonly DependencyProperty ChildProperty = DependencyProperty.Register(
+        nameof(Child),
+        typeof(UIElement),
+        typeof(JustinControl),
+        new PropertyMetadata(null, OnChildChanged));
+
+    public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register(
+        nameof(IsActive),
+        typeof(bool),
+        typeof(JustinControl),
+        new PropertyMetadata(false, OnIsActiveChanged));
 
     private const string RootGridTemplateName = "PART_RootGrid";
 
@@ -38,7 +48,6 @@ public class JustinControl : Control
 
         _childContainer = new Border();
         _childContainerVisual = ElementCompositionPreview.GetElementVisual(_childContainer);
-        _childContainerVisual.Opacity = 0;
 
         _canvasControl = new CanvasControl
         {
@@ -58,6 +67,12 @@ public class JustinControl : Control
     {
         get => (UIElement?)GetValue(ChildProperty);
         set => SetValue(ChildProperty, value);
+    }
+
+    public bool IsActive
+    {
+        get => (bool)GetValue(IsActiveProperty);
+        set => SetValue(IsActiveProperty, value);
     }
 
     protected override void OnApplyTemplate()
@@ -83,6 +98,22 @@ public class JustinControl : Control
         }
     }
 
+    private static void OnIsActiveChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        JustinControl self = (JustinControl)d;
+        bool oldValue = (bool)e.OldValue;
+        if (oldValue)
+        {
+            self.Uninitialize();
+        }
+
+        bool newValue = (bool)e.NewValue;
+        if (newValue)
+        {
+            self.Initialize();
+        }
+    }
+
     private SizeInt32 GetIntSize()
     {
         return new SizeInt32
@@ -94,6 +125,11 @@ public class JustinControl : Control
 
     private void Initialize()
     {
+        if (!IsActive || !IsLoaded)
+        {
+            return;
+        }
+
         if (_captureFramePool is not null && _captureSession is not null)
         {
             return;
@@ -110,6 +146,7 @@ public class JustinControl : Control
             return;
         }
 
+        _childContainerVisual.Opacity = 0;
         GraphicsCaptureItem captureItem = GraphicsCaptureItem.CreateFromVisual(_childContainerVisual);
         _captureFramePool = Direct3D11CaptureFramePool.Create(_device, DirectXPixelFormat.B8G8R8A8UIntNormalized, 1, size);
         _captureFramePool.FrameArrived += OnFrameArrived;
@@ -204,5 +241,7 @@ public class JustinControl : Control
         _captureSession = null;
         _captureFramePool?.Dispose();
         _captureFramePool = null;
+        _childContainerVisual.Opacity = 1;
+        _canvasControl.Invalidate();
     }
 }

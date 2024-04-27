@@ -120,6 +120,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Doge.cs" />
+    <Compile Include="DogePage.xaml.cs">
+      <DependentUpon>DogePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HHChaos.cs" />
     <Compile Include="HHChaosPage.xaml.cs">
       <DependentUpon>HHChaosPage.xaml</DependentUpon>
@@ -156,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DogePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HHChaosPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

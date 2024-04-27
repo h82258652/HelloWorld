@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Windows.System;
 using Windows.UI.Core;
@@ -9,12 +10,21 @@ namespace HelloWorld;
 
 public sealed partial class MainPage : Page
 {
+    private readonly Dictionary<Type, IReadOnlyList<int>> _allTargets;
     private readonly List<int> _currentAmbie = new();
+    private readonly IReadOnlyList<int> _targetDoge = new List<int>() { (int)VirtualKey.D, (int)VirtualKey.O, (int)VirtualKey.G, (int)VirtualKey.E };
     private readonly IReadOnlyList<int> _targetHHChaos = new List<int>() { (int)VirtualKey.H, (int)VirtualKey.H, (int)VirtualKey.C, (int)VirtualKey.H, (int)VirtualKey.A, (int)VirtualKey.O, (int)VirtualKey.S };
     private readonly IReadOnlyList<int> _targetJustin = new List<int>() { (int)VirtualKey.J, (int)VirtualKey.U, (int)VirtualKey.S, (int)VirtualKey.T, (int)VirtualKey.I, (int)VirtualKey.N };
 
     public MainPage()
     {
+        _allTargets = new Dictionary<Type, IReadOnlyList<int>>()
+        {
+            { typeof(JustinPage), _targetJustin },
+            { typeof(HHChaosPage), _targetHHChaos },
+            { typeof(DogePage), _targetDoge },
+        };
+
         InitializeComponent();
     }
 
@@ -33,15 +43,16 @@ public sealed partial class MainPage : Page
 
         _currentAmbie.Add((int)args.VirtualKey);
 
-        if (CheckAmbie(_currentAmbie, _targetJustin))
+        foreach (KeyValuePair<Type, IReadOnlyList<int>> kv in _allTargets)
         {
-            _currentAmbie.Clear();
-            Frame.Navigate(typeof(JustinPage));
-        }
-        else if (CheckAmbie(_currentAmbie, _targetHHChaos))
-        {
-            _currentAmbie.Clear();
-            Frame.Navigate(typeof(HHChaosPage));
+            IReadOnlyList<int> v = kv.Value;
+            if (CheckAmbie(_currentAmbie, v))
+            {
+                _currentAmbie.Clear();
+                Type k = kv.Key;
+                Frame.Navigate(k);
+                return;
+            }
         }
     }
 

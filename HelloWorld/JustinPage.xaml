@@ -7,20 +7,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
-    <local:JustinControl
-        Width="300"
-        Height="300"
-        ProcessImage="OnProcessImage">
-        <Grid Background="Red">
-            <ProgressRing
-                Width="150"
-                Height="150"
-                IsActive="True" />
-            <Button
-                HorizontalAlignment="Center"
-                Click="OnGoJustinButtonClick"
-                Content="Go Justin"
-                FontSize="36" />
+    <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Spacing="8">
+        <Grid Width="300" Height="300">
+            <local:JustinControl IsActive="{Binding ElementName=IsJustinRunningCheckBox, Path=IsChecked, Mode=OneWay}" ProcessImage="OnProcessImage">
+                <Grid Background="Red">
+                    <ProgressRing
+                        Width="150"
+                        Height="150"
+                        IsActive="True" />
+                    <Button
+                        HorizontalAlignment="Center"
+                        Click="OnGoJustinButtonClick"
+                        Content="Go Justin"
+                        FontSize="36" />
+                </Grid>
+            </local:JustinControl>
         </Grid>
-    </local:JustinControl>
+        <CheckBox
+            x:Name="IsJustinRunningCheckBox"
+            HorizontalAlignment="Center"
+            Content="Is Justin Running"
+            IsChecked="False" />
+    </StackPanel>
 </Page>

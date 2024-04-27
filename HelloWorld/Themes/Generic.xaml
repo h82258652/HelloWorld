@@ -4,6 +4,7 @@
     xmlns:local="using:HelloWorld">
 
     <Style TargetType="local:JustinControl">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:JustinControl">

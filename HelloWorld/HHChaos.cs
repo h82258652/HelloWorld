@@ -6,7 +6,6 @@ namespace HelloWorld;
 
 [D2DInputCount(1)]
 [D2DInputSimple(0)]
-[D2DRequiresScenePosition]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
 [AutoConstructor]
 public readonly partial struct HHChaos : ID2D1PixelShader

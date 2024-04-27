@@ -128,6 +128,10 @@
     <Compile Include="HHChaosPage.xaml.cs">
       <DependentUpon>HHChaosPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Jerry.cs" />
+    <Compile Include="JerryPage.xaml.cs">
+      <DependentUpon>JerryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Justin.cs" />
     <Compile Include="JustinControl.cs" />
     <Compile Include="JustinControlProcessImageEventHandler.cs" />
@@ -145,7 +149,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\afmhot.png" />
+    <Content Include="Assets\dissolve_noise.png" />
+    <Content Include="Assets\jerry.jpg" />
     <Content Include="Assets\test.gif" />
+    <Content Include="Assets\tom.gif" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -165,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HHChaosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JerryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

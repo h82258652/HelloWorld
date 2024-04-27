@@ -1,6 +1,7 @@
 ﻿using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.UI;
 using Microsoft.Graphics.Canvas.UI.Xaml;
+using System;
 using Windows.Graphics;
 using Windows.Graphics.Capture;
 using Windows.Graphics.DirectX;
@@ -61,6 +62,8 @@ public class JustinControl : Control
         SizeChanged += OnSizeChanged;
     }
 
+    public event EventHandler? DeviceReady;
+
     public event JustinControlProcessImageEventHandler? ProcessImage;
 
     public UIElement? Child
@@ -68,6 +71,8 @@ public class JustinControl : Control
         get => (UIElement?)GetValue(ChildProperty);
         set => SetValue(ChildProperty, value);
     }
+
+    public CanvasDevice? Device => _device;
 
     public bool IsActive
     {
@@ -162,6 +167,8 @@ public class JustinControl : Control
     private void OnCreateResources(CanvasControl sender, CanvasCreateResourcesEventArgs args)
     {
         _device = sender.Device;
+
+        DeviceReady?.Invoke(this, EventArgs.Empty);
 
         Initialize();
     }

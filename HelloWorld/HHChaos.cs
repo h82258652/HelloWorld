@@ -8,6 +8,7 @@ namespace HelloWorld;
 [D2DInputSimple(0)]
 [D2DRequiresScenePosition]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
+[D2DGeneratedPixelShaderDescriptor]
 public readonly partial struct HHChaos : ID2D1PixelShader
 {
     private readonly float _amount;

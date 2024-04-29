@@ -5,6 +5,7 @@ namespace HelloWorld;
 [D2DInputCount(1)]
 [D2DInputSimple(0)]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
+[D2DGeneratedPixelShaderDescriptor]
 public readonly partial struct Justin : ID2D1PixelShader
 {
     public float4 Execute()

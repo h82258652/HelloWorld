@@ -8,10 +8,15 @@ namespace HelloWorld;
 [D2DInputSimple(1)]
 [D2DInputSimple(2)]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
-[AutoConstructor]
+[D2DGeneratedPixelShaderDescriptor]
 public readonly partial struct Jerry : ID2D1PixelShader
 {
     private readonly float _threshold;
+
+    public Jerry(float threshold)
+    {
+        _threshold = threshold;
+    }
 
     public float4 Execute()
     {

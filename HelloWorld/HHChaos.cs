@@ -6,15 +6,24 @@ namespace HelloWorld;
 
 [D2DInputCount(1)]
 [D2DInputSimple(0)]
+[D2DRequiresScenePosition]
 [D2DShaderProfile(D2D1ShaderProfile.PixelShader50)]
-[AutoConstructor]
 public readonly partial struct HHChaos : ID2D1PixelShader
 {
     private readonly float _amount;
+    private readonly float _dpiScale;
+    private readonly float2 _resolution;
+
+    public HHChaos(float amount, float2 resolution, float dpiScale)
+    {
+        _amount = amount;
+        _resolution = resolution;
+        _dpiScale = dpiScale;
+    }
 
     public float4 Execute()
     {
-        float2 uv = D2D.GetInputCoordinate(0).XY;
+        float2 uv = D2D.GetScenePosition().XY / _resolution / _dpiScale;
 
         uv -= 0.5f;// move to center
 

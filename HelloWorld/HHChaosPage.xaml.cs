@@ -1,6 +1,5 @@
 ﻿using ComputeSharp.D2D1.Uwp;
 using Microsoft.Graphics.Canvas;
-using Windows.Graphics.Display;
 using Windows.Graphics.Effects;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,10 +25,8 @@ public sealed partial class HHChaosPage : Page
 
     private ICanvasImage OnProcessImage(IGraphicsEffectSource effectSource)
     {
-        float dpiScale = DisplayInformation.GetForCurrentView().ResolutionScale.ToFloat();
-
         _hhchaos.Sources[0] = effectSource;
-        _hhchaos.ConstantBuffer = new HHChaos((float)AmountSlider.Value, new float2(300, 300), dpiScale);
+        _hhchaos.ConstantBuffer = new HHChaos((float)AmountSlider.Value);
         return _hhchaos;
     }
 }

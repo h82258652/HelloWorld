@@ -128,6 +128,10 @@
     <Compile Include="HHChaosPage.xaml.cs">
       <DependentUpon>HHChaosPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Huh.cs" />
+    <Compile Include="HuhPage.xaml.cs">
+      <DependentUpon>HuhPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Jerry.cs" />
     <Compile Include="JerryPage.xaml.cs">
       <DependentUpon>JerryPage.xaml</DependentUpon>
@@ -154,6 +158,7 @@
     <Content Include="Assets\jerry.jpg" />
     <Content Include="Assets\test.gif" />
     <Content Include="Assets\tom.gif" />
+    <Content Include="Assets\huh.mp4" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -173,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HHChaosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HuhPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

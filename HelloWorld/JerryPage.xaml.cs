@@ -1,6 +1,7 @@
 ﻿using ComputeSharp.D2D1.Uwp;
 using Microsoft.Graphics.Canvas;
 using System;
+using Windows.Graphics.Display;
 using Windows.Graphics.Effects;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -25,14 +26,19 @@ public sealed partial class JerryPage : Page
     {
         if (JustinControl.Device is { } device)
         {
-            _noise = await CanvasBitmap.LoadAsync(device, new Uri("ms-appx:///Assets/dissolve_noise.png"));
-            _rampTex = await CanvasBitmap.LoadAsync(device, new Uri("ms-appx:///Assets/afmhot.png"));
+            _noise = await CanvasBitmap.LoadAsync(device, new Uri("ms-appx:///Assets/dissolve_noise.png"), JustinControl.Dpi);
+            _rampTex = await CanvasBitmap.LoadAsync(device, new Uri("ms-appx:///Assets/afmhot.png"), JustinControl.Dpi);
         }
     }
 
     private ICanvasImage? OnProcessImage(IGraphicsEffectSource effectSource)
     {
-        if (_noise is null)
+        if (_noise is null || _rampTex is null)
+        {
+            return null;
+        }
+
+        if (JustinControl.Dpi != _noise.Dpi || JustinControl.Dpi != _rampTex.Dpi)
         {
             return null;
         }

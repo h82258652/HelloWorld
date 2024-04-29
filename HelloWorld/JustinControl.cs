@@ -90,6 +90,8 @@ public class JustinControl : Control
 
     public CanvasDevice? Device => _device;
 
+    public float Dpi => _canvasControl.Dpi;
+
     public bool IsActive
     {
         get => (bool)GetValue(IsActiveProperty);

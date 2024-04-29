@@ -21,7 +21,7 @@
                     <Button
                         HorizontalAlignment="Center"
                         Click="OnGoJustinButtonClick"
-                        Content="Go Justin"
+                        Content="Let's Go, Justin"
                         FontSize="36" />
                 </Grid>
             </local:JustinControl>

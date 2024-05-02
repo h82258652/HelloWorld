@@ -129,6 +129,10 @@
     <Compile Include="HHChaosPage.xaml.cs">
       <DependentUpon>HHChaosPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Higan.cs" />
+    <Compile Include="HiganPage.xaml.cs">
+      <DependentUpon>HiganPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Huh.cs" />
     <Compile Include="HuhPage.xaml.cs">
       <DependentUpon>HuhPage.xaml</DependentUpon>
@@ -184,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HHChaosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HiganPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

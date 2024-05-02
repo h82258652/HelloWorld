@@ -14,6 +14,7 @@ public sealed partial class MainPage : Page
     private readonly List<int> _currentAmbie = new();
     private readonly IReadOnlyList<int> _targetDoge = new List<int>() { (int)VirtualKey.D, (int)VirtualKey.O, (int)VirtualKey.G, (int)VirtualKey.E };
     private readonly IReadOnlyList<int> _targetHHChaos = new List<int>() { (int)VirtualKey.H, (int)VirtualKey.H, (int)VirtualKey.C, (int)VirtualKey.H, (int)VirtualKey.A, (int)VirtualKey.O, (int)VirtualKey.S };
+    private readonly IReadOnlyList<int> _targetHigan = new List<int>() { (int)VirtualKey.H, (int)VirtualKey.I, (int)VirtualKey.G, (int)VirtualKey.A, (int)VirtualKey.N };
     private readonly IReadOnlyList<int> _targetHuh = new List<int>() { (int)VirtualKey.H, (int)VirtualKey.U, (int)VirtualKey.H };
     private readonly IReadOnlyList<int> _targetJerry = new List<int>() { (int)VirtualKey.J, (int)VirtualKey.E, (int)VirtualKey.R, (int)VirtualKey.R, (int)VirtualKey.Y };
     private readonly IReadOnlyList<int> _targetJustin = new List<int>() { (int)VirtualKey.J, (int)VirtualKey.U, (int)VirtualKey.S, (int)VirtualKey.T, (int)VirtualKey.I, (int)VirtualKey.N };
@@ -28,7 +29,8 @@ public sealed partial class MainPage : Page
             { typeof(DogePage), _targetDoge },
             { typeof(JerryPage), _targetJerry },
             { typeof(HuhPage), _targetHuh },
-            { typeof(RudyPage), _targetRudy }
+            { typeof(RudyPage), _targetRudy },
+            { typeof(HiganPage), _targetHigan },
         };
 
         InitializeComponent();

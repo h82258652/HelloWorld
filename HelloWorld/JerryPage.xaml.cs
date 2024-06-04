@@ -1,7 +1,6 @@
 ﻿using ComputeSharp.D2D1.Uwp;
 using Microsoft.Graphics.Canvas;
 using System;
-using Windows.Graphics.Display;
 using Windows.Graphics.Effects;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

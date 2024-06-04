@@ -58,13 +58,15 @@ public sealed partial class SergioPage : Page
         }
 
         DateTime now = DateTime.Now;
+        IGraphicsEffectSource lastEffect = effectSource;
         for (int i = 0; i < _sergios.Count; i++)
         {
             var sergio = _sergios[i];
-            sergio.UpdateEffectProperties(_sergios.ElementAtOrDefault(i - 1)?.Effect ?? effectSource, now);
+            sergio.UpdateEffectProperties(lastEffect, now);
+            lastEffect = sergio.Effect;
         }
 
-        return _sergios.LastOrDefault()?.Effect;
+        return lastEffect as ICanvasImage;
     }
 
     private void OnVSRudyButtonClick(object sender, RoutedEventArgs e)

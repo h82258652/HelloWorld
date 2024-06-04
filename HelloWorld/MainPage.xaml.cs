@@ -19,6 +19,7 @@ public sealed partial class MainPage : Page
     private readonly IReadOnlyList<int> _targetJerry = new List<int>() { (int)VirtualKey.J, (int)VirtualKey.E, (int)VirtualKey.R, (int)VirtualKey.R, (int)VirtualKey.Y };
     private readonly IReadOnlyList<int> _targetJustin = new List<int>() { (int)VirtualKey.J, (int)VirtualKey.U, (int)VirtualKey.S, (int)VirtualKey.T, (int)VirtualKey.I, (int)VirtualKey.N };
     private readonly IReadOnlyList<int> _targetRudy = new List<int>() { (int)VirtualKey.R, (int)VirtualKey.U, (int)VirtualKey.D, (int)VirtualKey.Y };
+    private readonly IReadOnlyList<int> _targetSergio = new List<int>() { (int)VirtualKey.S, (int)VirtualKey.E, (int)VirtualKey.R, (int)VirtualKey.G, (int)VirtualKey.I, (int)VirtualKey.O };
 
     public MainPage()
     {
@@ -31,6 +32,7 @@ public sealed partial class MainPage : Page
             { typeof(HuhPage), _targetHuh },
             { typeof(RudyPage), _targetRudy },
             { typeof(HiganPage), _targetHigan },
+            { typeof(SergioPage), _targetSergio },
         };
 
         InitializeComponent();

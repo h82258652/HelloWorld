@@ -7,6 +7,7 @@ using Windows.Graphics;
 using Windows.Graphics.Capture;
 using Windows.Graphics.DirectX;
 using Windows.Graphics.Display;
+using Windows.Graphics.Imaging;
 using Windows.UI;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
@@ -216,6 +217,8 @@ public class JustinControl : Control
     private void OnDraw(CanvasControl sender, CanvasDrawEventArgs args)
     {
         args.DrawingSession.Clear(Colors.Transparent);
+        SizeInt32 size = GetIntSize();
+        args.DrawingSession.EffectTileSize = new BitmapSize() { Width = (uint)size.Width, Height = (uint)size.Height };
 
         if (_bitmap is null)
         {

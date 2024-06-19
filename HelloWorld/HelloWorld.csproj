@@ -137,6 +137,7 @@
     <Compile Include="HuhPage.xaml.cs">
       <DependentUpon>HuhPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ICompositionVisualSurfacePartner.cs" />
     <Compile Include="Jerry.cs" />
     <Compile Include="JerryPage.xaml.cs">
       <DependentUpon>JerryPage.xaml</DependentUpon>
@@ -144,12 +145,16 @@
     <Compile Include="Justin.cs" />
     <Compile Include="JustinControl.cs" />
     <Compile Include="JustinControlProcessImageEventHandler.cs" />
+    <Compile Include="JustinFrame.cs" />
+    <Compile Include="JustinFrameNavigationEffectInfo.cs" />
     <Compile Include="JustinPage.xaml.cs">
       <DependentUpon>JustinPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pokemon.cs" />
+    <Compile Include="PokemonNavigationEffectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rudy.cs" />
     <Compile Include="RudyPage.xaml.cs">

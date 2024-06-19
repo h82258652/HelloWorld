@@ -60,7 +60,7 @@ public sealed partial class MainPage : Page
             {
                 _currentAmbie.Clear();
                 Type k = kv.Key;
-                Frame.Navigate(k);
+                ((JustinFrame)Frame).NavigateWithEffect(k, null, new PokemonNavigationEffectInfo((int)ActualWidth, (int)ActualHeight));
                 return;
             }
         }

@@ -39,14 +39,14 @@ namespace HelloWorld
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            JustinFrame rootFrame = Window.Current.Content as JustinFrame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
+                rootFrame = new JustinFrame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 

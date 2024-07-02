@@ -1,4 +1,5 @@
 ﻿using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.Effects;
 using Microsoft.Graphics.Canvas.UI;
 using Microsoft.Graphics.Canvas.UI.Xaml;
 using System;
@@ -225,10 +226,25 @@ public class JustinControl : Control
             return;
         }
 
-        ICanvasImage? processedImage = ProcessImage?.Invoke(_bitmap);
+        if (ProcessImage is null)
+        {
+            args.DrawingSession.DrawImage(_bitmap);
+            return;
+        }
+
+        using UnPremultiplyEffect unPremultiplySourceEffect = new()
+        {
+            Source = _bitmap
+        };
+
+        ICanvasImage? processedImage = ProcessImage(unPremultiplySourceEffect);
         if (processedImage is not null)
         {
-            args.DrawingSession.DrawImage(processedImage);
+            using UnPremultiplyEffect unPremultiplyProcessedEffect = new()
+            {
+                Source = processedImage
+            };
+            args.DrawingSession.DrawImage(unPremultiplyProcessedEffect);
         }
         else
         {

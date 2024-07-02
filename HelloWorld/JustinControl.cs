@@ -240,11 +240,11 @@ public class JustinControl : Control
         ICanvasImage? processedImage = ProcessImage(unPremultiplySourceEffect);
         if (processedImage is not null)
         {
-            using UnPremultiplyEffect unPremultiplyProcessedEffect = new()
+            using PremultiplyEffect premultiplyProcessedEffect = new()
             {
                 Source = processedImage
             };
-            args.DrawingSession.DrawImage(unPremultiplyProcessedEffect);
+            args.DrawingSession.DrawImage(premultiplyProcessedEffect);
         }
         else
         {

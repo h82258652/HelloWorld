@@ -23,7 +23,7 @@ public sealed partial class HHChaosPage : Page
         }
     }
 
-    private ICanvasImage OnProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage OnProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         _hhchaos.Sources[0] = effectSource;
         _hhchaos.ConstantBuffer = new HHChaos((float)AmountSlider.Value);

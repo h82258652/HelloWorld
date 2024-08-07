@@ -23,7 +23,7 @@ public sealed partial class DogePage : Page
         }
     }
 
-    private ICanvasImage OnProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage OnProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         _doge.Sources[0] = effectSource;
         _doge.ConstantBuffer = new Doge(new float2((float)BlockSizeSlider.Value, (float)BlockSizeSlider.Value), new float2(300, 300));

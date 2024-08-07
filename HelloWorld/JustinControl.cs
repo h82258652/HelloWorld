@@ -84,6 +84,8 @@ public class JustinControl : Control
 
     public event JustinControlProcessImageEventHandler? ProcessImage;
 
+    public CanvasControl CanvasControl => _canvasControl;
+
     public UIElement? Child
     {
         get => (UIElement?)GetValue(ChildProperty);
@@ -92,7 +94,7 @@ public class JustinControl : Control
 
     public CanvasDevice? Device => _device;
 
-    public float Dpi => _canvasControl.Dpi;
+    public float Dpi => CanvasControl.Dpi;
 
     public bool IsActive
     {
@@ -141,8 +143,7 @@ public class JustinControl : Control
 
     private float GetDpiScale()
     {
-        float dpi = _canvasControl.Dpi;
-        return dpi / 96;
+        return Dpi / 96;
     }
 
     private SizeInt32 GetIntSize()
@@ -237,7 +238,7 @@ public class JustinControl : Control
             Source = _bitmap
         };
 
-        ICanvasImage? processedImage = ProcessImage(unPremultiplySourceEffect);
+        ICanvasImage? processedImage = ProcessImage(this, unPremultiplySourceEffect);
         if (processedImage is not null)
         {
             using PremultiplyEffect premultiplyProcessedEffect = new()

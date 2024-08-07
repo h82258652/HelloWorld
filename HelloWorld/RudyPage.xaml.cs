@@ -31,7 +31,7 @@ public sealed partial class RudyPage : Page
         set => SetValue(HHChaosProperty, value);
     }
 
-    private ICanvasImage OnInnerProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage OnInnerProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         _justin.Sources[0] = effectSource;
         return _justin;
@@ -55,14 +55,14 @@ public sealed partial class RudyPage : Page
         storyboard.Begin();
     }
 
-    private ICanvasImage OnOuterProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage OnOuterProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         _hhchaos.Sources[0] = effectSource;
         _hhchaos.ConstantBuffer = new HHChaos((float)HHChaos);
         return _hhchaos;
     }
 
-    private ICanvasImage OnProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage OnProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         _rudy.Sources[0] = effectSource;
         _rudy.ConstantBuffer = new Rudy(DateTime.Now.Millisecond);

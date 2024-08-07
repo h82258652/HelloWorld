@@ -47,7 +47,7 @@ public sealed partial class HuhPage : Page
         }
     }
 
-    private ICanvasImage OnProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage OnProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         _huh.Sources[0] = effectSource;
         _edgeDetectionEffect.Source = effectSource;

@@ -5,5 +5,5 @@ using Windows.Graphics.Effects;
 
 namespace HelloWorld
 {
-    public delegate ICanvasImage? JustinControlProcessImageEventHandler(IGraphicsEffectSource effectSource);
+    public delegate ICanvasImage? JustinControlProcessImageEventHandler(JustinControl sender, IGraphicsEffectSource effectSource);
 }

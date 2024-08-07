@@ -127,7 +127,7 @@ public class JustinFrame : Frame
         _currentEffectInfo = null;
     }
 
-    private ICanvasImage? OnContentEffectHostProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage? OnContentEffectHostProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         if (_currentEffectInfo is not null && _startTime.HasValue)
         {
@@ -140,7 +140,7 @@ public class JustinFrame : Frame
         return null;
     }
 
-    private ICanvasImage? OnPreviousEffectHostProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage? OnPreviousEffectHostProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         if (_currentEffectInfo is not null && _startTime.HasValue)
         {

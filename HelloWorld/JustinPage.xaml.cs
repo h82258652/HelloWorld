@@ -23,7 +23,7 @@ public sealed partial class JustinPage : Page
         }
     }
 
-    private ICanvasImage OnProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage OnProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         _justin.Sources[0] = effectSource;
         return _justin;

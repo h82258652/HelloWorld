@@ -50,7 +50,7 @@ public sealed partial class SergioPage : Page
         _sergios.Clear();
     }
 
-    private ICanvasImage? OnProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage? OnProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         if (_sergios.Count <= 0)
         {

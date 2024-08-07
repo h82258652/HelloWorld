@@ -72,7 +72,7 @@ public sealed partial class HiganPage : Page
         _storyboard = storyboard;
     }
 
-    private ICanvasImage? OnProcessImage(IGraphicsEffectSource effectSource)
+    private ICanvasImage? OnProcessImage(JustinControl sender, IGraphicsEffectSource effectSource)
     {
         if (!_center.HasValue)
         {

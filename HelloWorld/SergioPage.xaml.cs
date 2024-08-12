@@ -33,6 +33,9 @@ public sealed partial class SergioPage : Page
 
     private async void OnContentGridPointerPressed(object sender, PointerRoutedEventArgs e)
     {
+        JustinControl.IsActive = true;
+        await JustinControl.WaitForReadyAsync();
+
         FrameworkElement element = (FrameworkElement)sender;
         Vector2 position = e.GetCurrentPoint(element).Position.ToVector2();
         double duration = GenerateDuration();
@@ -43,6 +46,11 @@ public sealed partial class SergioPage : Page
         await Task.Delay(TimeSpan.FromSeconds(duration));
 
         _sergios.Remove(sergio);
+
+        if (_sergios.Count <= 0)
+        {
+            JustinControl.IsActive = false;
+        }
     }
 
     private void OnJustinSizeChanged(object sender, SizeChangedEventArgs e)

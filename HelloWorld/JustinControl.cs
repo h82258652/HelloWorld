@@ -4,6 +4,7 @@ using Microsoft.Graphics.Canvas.UI;
 using Microsoft.Graphics.Canvas.UI.Xaml;
 using System;
 using System.Numerics;
+using System.Threading.Tasks;
 using Windows.Graphics;
 using Windows.Graphics.Capture;
 using Windows.Graphics.DirectX;
@@ -51,6 +52,7 @@ public class JustinControl : Control
     private GraphicsCaptureSession? _captureSession;
     private CanvasDevice? _device;
     private DisplayInformation? _displayInformation;
+    private TaskCompletionSource<object?> _drewTcs = new();
 
     public JustinControl()
     {
@@ -100,6 +102,11 @@ public class JustinControl : Control
     {
         get => (bool)GetValue(IsActiveProperty);
         set => SetValue(IsActiveProperty, value);
+    }
+
+    public Task WaitForReadyAsync()
+    {
+        return _drewTcs.Task;
     }
 
     protected override void OnApplyTemplate()
@@ -187,7 +194,6 @@ public class JustinControl : Control
             return;
         }
 
-        _captureContainerVisual.Opacity = 0;
         GraphicsCaptureItem captureItem = GraphicsCaptureItem.CreateFromVisual(_captureContainerVisual);
         _captureFramePool = Direct3D11CaptureFramePool.Create(_device, DirectXPixelFormat.B8G8R8A8UIntNormalized, 1, size);
         _captureFramePool.FrameArrived += OnFrameArrived;
@@ -251,6 +257,9 @@ public class JustinControl : Control
         {
             args.DrawingSession.DrawImage(_bitmap);
         }
+
+        _drewTcs?.TrySetResult(null);
+        _captureContainerVisual.Opacity = 0;
     }
 
     private void OnFrameArrived(Direct3D11CaptureFramePool sender, object args)
@@ -327,6 +336,8 @@ public class JustinControl : Control
         _captureFramePool = null;
         _captureContainerVisual.Opacity = 1;
         _canvasControl.Invalidate();
+        _drewTcs.TrySetCanceled();
+        _drewTcs = new TaskCompletionSource<object?>();
     }
 
     private void UpdateAdaptDpiContainerScale()

@@ -258,7 +258,7 @@ public class JustinControl : Control
             args.DrawingSession.DrawImage(_bitmap);
         }
 
-        _drewTcs?.TrySetResult(null);
+        _drewTcs.TrySetResult(null);
         _captureContainerVisual.Opacity = 0;
     }
 
